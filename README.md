@@ -1,6 +1,14 @@
 # tomcat-redis-session-manager
 
+搬迁的
+https://github.com/jcoleman/tomcat-redis-session-manager
+感谢原作者
+
+这里只是记录使用方式，和编译好的jar包，方便项目急需使用的情况。
+
+
 实现tomcat的session缓存到redis中
+
 
 1 将tomcat-redis-session、jedis.jar、commons-pool2.jar 三个jar包分别放在tomcat实例下的lib目录下。
 
@@ -10,8 +18,8 @@
 <!-- 
     Jedis save session
     -->
-    <Valve className="com.orangefunction.tomcat.redissessions.RedisSessionHandlerValve" />        
-    <Manager className="com.orangefunction.tomcat.redissessions.RedisSessionManager" 
+    <Valve className="com.radiadesign.catalina.session.RedisSessionHandlerValve" />        
+    <Manager className="com.radiadesign.catalina.session.RedisSessionManager" 
         host="localhost" 
         port="6379" 
         database="0" 
@@ -22,8 +30,8 @@
 Sentinel集群配置：
 
  <!-- Sentinel 配置 -->
-     <Valve className="com.orangefunction.tomcat.redissessions.RedisSessionHandlerValve" />        
-    <Manager className="com.orangefunction.tomcat.redissessions.RedisSessionManager" 
+     <Valve className="com.radiadesign.catalina.session.RedisSessionHandlerValve" />        
+    <Manager className="com.radiadesign.catalina.session.RedisSessionManager" 
         maxInactiveInterval="60"
         sentinelMaster="mymaster"
 		password="redispassword" 
